@@ -6,13 +6,22 @@ import { useStateValue } from '../StateProvider';
 
 const Header = () => {
 
+
+    const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email");
+
     const [{ basket }] = useStateValue(false);
+    const [searchLivro, setSearchLivro] = useState("");
+    const [nome, setNome] = useState("");
+
     const navigate = useNavigate();
 
-    const nome = localStorage.getItem("nome");
-    const token = localStorage.getItem("token");
 
-    const [searchLivro, setSearchLivro] = useState("");
+    Api.get(`/api/usuarios/email/${email}`).then((response) => {
+        setNome(response.data.nome);
+    }).catch((error) => {
+        console.log(error);
+    });
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -50,7 +59,7 @@ const Header = () => {
                                 <p>{nome}</p>
                             ) :
                                 (
-                                    <p onClick={() => navigate("/login") }>Visitante</p>
+                                    <p onClick={() => navigate("/login")}>Visitante</p>
                                 )
                         }
                         {
@@ -87,24 +96,17 @@ const Header = () => {
                         )
                     }
 
-                    {
-                        token ? (
-                            <BasketButton onClick={() => navigate("/checkout")}>
-                                <img src="/basket.png/" alt="" />
 
-                                <BasketBG>
-                                    <p>{basket?.length}</p>
-                                </BasketBG>
-                            </BasketButton>
-                        ) :
-                            <BasketButton onClick={() => navigate("/login")}>
-                                <img src="/basket.png/" alt="" />
 
-                                <BasketBG>
-                                    <p>{basket?.length}</p>
-                                </BasketBG>
-                            </BasketButton>
-                    }
+                    <BasketButton onClick={() => navigate("/checkout")}>
+                        <img src="/basket.png/" alt="" />
+
+                        <BasketBG>
+                            <p>{basket?.length}</p>
+                        </BasketBG>
+                    </BasketButton>
+
+
 
 
 

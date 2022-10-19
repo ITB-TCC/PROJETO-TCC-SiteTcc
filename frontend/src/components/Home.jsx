@@ -16,6 +16,8 @@ const Home = () => {
 
   const [livros, setLivros] = useState("");
 
+  
+
   useEffect(() => {
     Api.get("/api/book").then((response) => {
       setLivros(response.data);
@@ -25,24 +27,27 @@ const Home = () => {
   return (
     <Container>
       <Header />
-
-      <DropdownCategory/>
-
+      <DropdownCategory />
       <Carousel />
 
       <Main>
         {
-          livros && livros.map((livro) => (
-            <Card
-              id={livro.id}
-              image={"https://books.google.com.br/books/publisher/content?id=hjcQCwAAQBAJ&hl=pt-BR&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U0MuXkWY6t7UZcHk_zr0rBIUtBhwQ&w=1280"}
-              price={livro.valueBook}
-              rating={3}
-              title={livro.name}
-              author={livro.author}
-              category={livro.category.nameCategory}
-            />
-          ))
+          livros && livros.map((livro, key) => {
+            return (
+              <Card
+                key={key}
+                id={livro.id}
+                image={"https://books.google.com.br/books/publisher/content?id=hjcQCwAAQBAJ&hl=pt-BR&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U0MuXkWY6t7UZcHk_zr0rBIUtBhwQ&w=1280"}
+                price={livro.valueBook}
+                rating={3}
+                title={livro.name}
+                author={livro.author}
+                category={livro.category.nameCategory}
+              />
+            )
+
+          }
+          )
         }
 
       </Main>
@@ -91,8 +96,5 @@ const Main = styled.div`
       grid-template-columns: repeat(3, 30%);
     }
 `;
-
-
-
 
 export default Home;

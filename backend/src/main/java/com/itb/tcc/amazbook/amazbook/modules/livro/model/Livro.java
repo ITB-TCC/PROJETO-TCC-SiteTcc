@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,6 +25,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import java.io.IOException;
 import java.time.LocalDate;
 
 @Entity
@@ -51,6 +53,10 @@ public class Livro {
     @Column(name = "VALOR_LIVRO")
     private Double valueBook;
 
+    /*@Column(name = "image_book")
+    @Lob
+    private byte[] image;*/
+
     // Data de publicação
     /*@Column(name = "DATA_PUBLICACAO", updatable = false)
     private LocalDate publicationDate;*/
@@ -67,13 +73,7 @@ public class Livro {
     @JoinColumn(name = "FK_USUARIO")
     private Usuario usuario;
 
-    /*@PrePersist
-    public void getPersist() {
-        //System.out.println(LocalDate.now());
-        publicationDate = LocalDate.now();
-    } */
-
-    public static Livro of(LivroRequest livroRequest, Category category) {
+    public static Livro of(LivroRequest livroRequest, Category category) throws IOException {
         Livro livro = new Livro();
         BeanUtils.copyProperties(livroRequest, livro);
         return Livro
@@ -82,6 +82,7 @@ public class Livro {
                 .author(livroRequest.getAuthor())
                 .publishingCompany(livroRequest.getPublishingCompany())
                 .valueBook(livroRequest.getValueBook())
+              //  .image(livro.getImage())
                 //.publicationDate(livroRequest.getPublicationDate())
                 .category(category)
                // .filesBook(filesBook)

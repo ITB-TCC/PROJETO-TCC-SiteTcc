@@ -70,12 +70,12 @@ function Payment() {
                     <h5>Informações do Destinatário</h5>
 
                     <div>
-                        <p><strong>Nome: </strong>{address.fullName} </p>
-                        <p><strong>Localização: </strong>{address.flat} </p>
-                        <p><strong>Rua: </strong>{address.area} </p>
-                        <p><strong>Ponto de Referência: </strong>{address.landmark} </p>
-                        <p><strong>Cidade e Estado: </strong>{address.city}, {address.state} </p>
-                        <p><strong>Telefone: </strong>{address.phone}</p>
+                        <p><strong>Nome: </strong>{address.nome} </p>
+                        <p><strong>Telefone </strong>{address.telefone} </p>
+                        <p><strong>Rua: </strong>{address.rua} </p>
+                        <p><strong>Ponto de Referência: </strong>{address.pontoDeReferencia} </p>
+                        <p><strong>Cidade e Estado</strong>{address.cidade}, {address.estado} </p>
+                        
                     </div>
 
                 </AddressContainer>

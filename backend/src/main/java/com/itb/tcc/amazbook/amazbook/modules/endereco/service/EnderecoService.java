@@ -58,8 +58,8 @@ public class EnderecoService {
     }
 
     private void validateBookDataInformed(EnderecoRequest enderecoRequest) {
-        if(isEmpty(enderecoRequest.getCep())){
-            throw new ValidationException(ErrorUtil.CEP_EMPTY);
+        if(isEmpty(enderecoRequest.getNumero())){
+            throw new ValidationException(ErrorUtil.NUMBER_ENPTY);
         }
 
     }

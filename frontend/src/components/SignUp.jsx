@@ -21,8 +21,9 @@ const SignUp = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         await Api.post("/api/usuarios/save", data).then((response) => {
-            console.log(response.data.nome);
+            console.log(response.data);
             
+            localStorage.setItem("idUser", response.data.id);
             alert("cadastro com sucesso");
             localStorage.setItem("nome", response.data.nome);
 

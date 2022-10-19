@@ -35,6 +35,11 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuarioRequest));
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UsuarioResponse> findByIdEmail(@PathVariable String email) {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findByIdEmail(email));
+    }
+
     @GetMapping("/id/{id}")
     public ResponseEntity<UsuarioResponse> findById(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findByIdResponse(id));

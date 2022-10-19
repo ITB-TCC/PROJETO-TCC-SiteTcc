@@ -1,3 +1,9 @@
-INSERT INTO category(ID, name_category) VALUES (1, 'Animação');
-INSERT INTO category(ID, name_category) VALUES (2, 'Terror');
-INSERT INTO category(ID, name_category) VALUES (3, 'Comedia');
+INSERT INTO category(ID, name_category) VALUES (1, 'Ficção');
+INSERT INTO category(ID, name_category) VALUES (2, 'Drama');
+INSERT INTO category(ID, name_category) VALUES (3, 'Terror');
+INSERT INTO category(ID, name_category) VALUES (4, 'Ação');
+INSERT INTO category(ID, name_category) VALUES (5, 'literatura');
+INSERT INTO category(ID, name_category) VALUES (6, 'Animação');
+INSERT INTO category(ID, name_category) VALUES (7, 'Historia');
+INSERT INTO category(ID, name_category) VALUES (8, 'Suspense');
+INSERT INTO category(ID, name_category) VALUES (9, 'Comedia');

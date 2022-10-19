@@ -12,8 +12,11 @@ import PaymentMethod from './PaymentMethod';
 function Checkout() {
 
     const [{ basket }, dispatch] = useStateValue();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
+    const token = localStorage.getItem('token');
+
+    
     const removeFromBasket = (e, id) => {
         e.preventDefault();
 
@@ -67,8 +70,12 @@ function Checkout() {
                     thousandSeparator={true}
                     prefix={"R$"}
                 />
+
+                {
+                    token ? <button onClick={() => navigate("/address")}>Continuar com o pagamento</button> :
+                     <button onClick={() => navigate("/login")}>Continuar com o pagamento</button>
+                }
                 
-                <button onClick={() => navigate("/address")}>Continuar com o pagamento</button>
             </Subtotal>
         </Main>
         

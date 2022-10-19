@@ -57,10 +57,10 @@ public class UsuarioService {
 
     }
 
-    public void saveLivro(Livro livro) {
-        System.out.println("Livro => " + livros.add(livro));
+    public UsuarioResponse findByIdEmail(String email) {
+        Usuario usuario = usuarioRepository.findByIdEmail(email);
+        return UsuarioResponse.of(usuario);
     }
-
 
     public UsuarioResponse save(UsuarioRequest usuarioRequest){
         validateClienteDataInformed(usuarioRequest);

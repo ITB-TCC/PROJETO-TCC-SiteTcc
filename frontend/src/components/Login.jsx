@@ -20,6 +20,7 @@ const Login = () => {
 
         await Api.post("/login", data).then((response) => {
             localStorage.setItem("token", response.data.Authorization);
+            localStorage.setItem("email", login);
             console.log(login)
             console.log(response.data.Authorization);
             navigate("/");

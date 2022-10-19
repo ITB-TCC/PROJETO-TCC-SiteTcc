@@ -1,20 +1,18 @@
 package com.itb.tcc.amazbook.amazbook.modules.file.model;
 
 import com.itb.tcc.amazbook.amazbook.modules.file.dto.FileRequest;
-import com.itb.tcc.amazbook.amazbook.modules.livro.model.Livro;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Lob;
+
 
 @Entity
 @Data
@@ -24,15 +22,14 @@ import javax.persistence.OneToOne;
 public class FilesBook {
 
     @Id
-    private Integer id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
     private String fileName;
-    private Byte[] data;
-    private String type;
+    private String fileType;
+    @Lob
+    private byte[] fileData;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "livro_id", referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "livro_fk"))
-    private Livro livro;
 
     public static FilesBook of(FileRequest fileRequest) {
         FilesBook filesBook = new FilesBook();
@@ -41,8 +38,8 @@ public class FilesBook {
                 .builder()
                 .id(filesBook.getId())
                 .fileName(filesBook.getFileName())
-                .data(filesBook.getData())
-                .type(filesBook.getType())
+                .fileType(filesBook.getFileType())
+                .fileData(filesBook.getFileData())
                 .build();
     }
 }

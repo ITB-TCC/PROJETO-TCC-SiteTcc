@@ -5,10 +5,11 @@ import lombok.Data;
 @Data
 public class EnderecoRequest {
 
-    private String cep;
-    private String logradouro;
-    private String complemento;
-    private String bairro;
+
+    private String nome;
+    private String telefone;
+    private String rua;
+    private String pontoDeReferencia;
     private String cidade;
     private String estado;
     private Short numero;

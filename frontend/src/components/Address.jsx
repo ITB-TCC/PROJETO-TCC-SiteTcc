@@ -2,112 +2,154 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+import Api from '../api/Api';
 import { useStateValue } from '../StateProvider';
 import Footer from './Footer';
 import Header from './Header';
 import PaymentMethod from './PaymentMethod';
 
 
-function Address() {
+const Address = () => {
 
-  const [{}, dispatch] = useStateValue()
-  const [fullName, setFullName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [area, setArea] = useState("")
-  const [landmark, setLandmark] = useState("")
-  const [city, setCity] = useState("")
-  const [state, setState] = useState("")
+    const [{ }, dispatch] = useStateValue()
+    const [nome, setNome] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [rua, setRua] = useState("");
+    const [pontoDeReferencia, setPontoDeReferencia] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [estado, setEstado] = useState("");
+    const [numero, setNumero] = useState(0);
+    const [userId, setUserId] = useState(0);
 
+    const email = localStorage.getItem("email");
+
+    Api.get(`/api/usuarios/email/${email}`).then((response) => {
+        console.log(response.data.id);
+        setUserId(response.data.id);
+    }).catch((error) => {
+        console.log(error);
+
+    })
 
     const navigate = useNavigate()
 
-    const deliver = (e) => {
-        e.preventDefault()
+    const data = {
+        nome: nome,
+        telefone: telefone,
+        rua: rua,
+        pontoDeReferencia: pontoDeReferencia,
+        cidade: cidade,
+        estado: estado,
+        numero: numero,
+        userId: userId
+    }
+
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
 
         dispatch({
             type: 'SET_ADRESS',
             item: {
-                fullName,
-                phone,
-                area,
-                landmark,
-                city,
-                state,
+                nome,
+                telefone,
+                rua,
+                pontoDeReferencia,
+                cidade,
+                estado,
+                numero
             }
         })
+        await Api.post("/api/endereco/save", data).then((response) => {
+            console.log(response.data);
+        }).catch((error) => {
+            alert("deu error")
+            console.log(error);
+        });
+
         navigate("/payment")
+
     }
 
+    return (
+        <Container>
+            <Header />
 
-  return (
-    <Container>
-        <Header />
+            <Main>
+                <FormContainer>
+                    <InputContainer>
+                        <p>Nome</p>
+                        <input
+                            onChange={(e) => setNome(e.target.value)}
+                            type="text"
+                            placeholder='John Cena'
+                            value={nome} />
+                    </InputContainer>
 
-        <Main>
-          <FormContainer>
-                  <InputContainer>
-                      <p>Nome</p>
-                      <input 
-                      onChange={(e) => setFullName(e.target.value)} 
-                      type="text" 
-                      placeholder='John Cena' 
-                      value={fullName}/>
-                  </InputContainer>
+                    <InputContainer>
+                        <p>Número de Telefone</p>
+                        <input
+                            onChange={(e) => setTelefone(e.target.value)}
+                            type="text"
+                            value={telefone}
+                        />
+                    </InputContainer>
 
-                  <InputContainer>
-                      <p>Número de Telefone</p>
-                      <input 
-                      onChange={(e) => setPhone(e.target.value)} 
-                      type="text" 
-                      value={phone}
-                      />
-                  </InputContainer>
+                    <InputContainer>
+                        <p>Rua</p>
+                        <input
+                            onChange={(e) => setRua(e.target.value)}
+                            type="text"
+                            value={rua}
+                        />
+                    </InputContainer>
 
-                  <InputContainer>
-                      <p>Rua</p>
-                      <input 
-                      onChange={(e) => setArea(e.target.value)} 
-                      type="text"
-                      value={area}
-                      />
-                  </InputContainer>
+                    <InputContainer>
+                        <p>Ponto de Referência</p>
+                        <input
+                            onChange={(e) => setPontoDeReferencia(e.target.value)}
+                            type="text"
+                            value={pontoDeReferencia}
+                        />
+                    </InputContainer>
 
-                  <InputContainer>
-                      <p>Ponto de Referência</p>
-                      <input 
-                      onChange={(e) => setLandmark(e.target.value)} 
-                      type="text"
-                      value={landmark}
-                      />
-                  </InputContainer>
+                    <InputContainer>
+                        <p>Cidade</p>
+                        <input
+                            onChange={(e) => setCidade(e.target.value)}
+                            type="text"
+                            value={cidade}
+                        />
+                    </InputContainer>
 
-                  <InputContainer>
-                      <p>Cidade</p>
-                      <input
-                      onChange={(e) => setCity(e.target.value)} 
-                      type="text"
-                      value={city}
-                      />
-                  </InputContainer>
+                    <InputContainer>
+                        <p>Estado</p>
+                        <input
+                            onChange={(e) => setEstado(e.target.value)}
+                            type="text"
+                            value={estado}
+                        />
+                    </InputContainer>
 
-                  <InputContainer>
-                      <p>Estado</p>
-                      <input 
-                      onChange={(e) => setState(e.target.value)} 
-                      type="text" 
-                      value={state}
-                      />
-                  </InputContainer>
 
-                  <button onClick={deliver}>Entegar neste endereço</button>
-          </FormContainer>
-        </Main>
+                    <InputContainer>
+                        <p>Numero</p>
+                        <input
+                            onChange={(e) => setNumero(e.target.value)}
+                            type="number"
+                            value={numero}
+                        />
+                    </InputContainer>
 
-        <PaymentMethod />
+                    <button onClick={onSubmit}>Entegar neste endereço</button>
+                </FormContainer>
+            </Main>
 
-        <Footer />
-    </Container>
-  )
+            <PaymentMethod />
+
+            <Footer />
+        </Container>
+    )
 }
 
 const Container = styled.div`

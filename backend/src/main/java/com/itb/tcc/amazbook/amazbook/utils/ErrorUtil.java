@@ -10,7 +10,7 @@ public class ErrorUtil {
     public static final String CLIENTE_EMAIL_EMPTY = "O email do cliente não pode estar vazio";
     public static final String CLIENTE_PASSWORD_EMPTY = "A senha do cliente não pode estar vazio";
     public static final String CLINTE_NOT_FOUND = "Cliente não encontrado";
-    public static final String CEP_EMPTY = "O cep está vazio";
+    public static final String NUMBER_ENPTY = "O cep está vazio";
     public static final String FILE_NOT_FOUND = "O arquivo nao encontrado";
     public static final String CATEGORY_EMPTY = "Categoria nao informada";
 }

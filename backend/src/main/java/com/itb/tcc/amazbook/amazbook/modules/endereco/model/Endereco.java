@@ -29,18 +29,18 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "CEP", length = 8, nullable = false)
-    private String cep;
+    @Column(name = "NOME", length = 120, nullable = false)
+    private String nome;
 
-    @Column(name = "logradouro", length = 120, nullable = false)
-    private String logradouro;
+    @Column(name = "TELEFONE", length = 120, nullable = false)
+    private String telefone;
 
-    @Column(name = "COMPLEMENTO", length = 100, nullable = false)
-    private String complemento;
+    @Column(name = "RUA", length = 120, nullable = false)
+    private String rua;
 
-    @Column(name = "BAIRRO", length = 100, nullable = false)
-    private String bairro;
-
+    @Column(name = "PONTO_DE_REFERENCIA", length = 100, nullable = false)
+    private String pontoDeReferencia;
+;
     @Column(name = "CIDADE", length = 50, nullable = false)
     private String cidade;
 
@@ -60,10 +60,10 @@ public class Endereco {
         return Endereco
                 .builder()
                 .id(endereco.getId())
-                .cep(enderecoRequest.getCep())
-                .logradouro(enderecoRequest.getLogradouro())
-                .complemento(enderecoRequest.getComplemento())
-                .bairro(enderecoRequest.getBairro())
+                .nome(enderecoRequest.getNome())
+                .telefone(enderecoRequest.getTelefone())
+                .rua(enderecoRequest.getRua())
+                .pontoDeReferencia(enderecoRequest.getPontoDeReferencia())
                 .cidade(enderecoRequest.getCidade())
                 .estado(enderecoRequest.getEstado())
                 .numero(enderecoRequest.getNumero())

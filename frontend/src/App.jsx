@@ -16,6 +16,8 @@ import Category from './components/Category';
 import SignUp from './components/SignUp/';
 import Orders from './components/Orders/';
 import Search from "./components/SearchBook/";
+import ProductView from './components/ProductView';
+import ProductViewDuo from './components/ProductViewDuo';
 
 
 const promise = loadStripe(
@@ -45,7 +47,7 @@ function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/category/:id" element={<Category />} />
-
+          <Route path="/productView/:id" element={<ProductViewDuo />} />
         </Routes>
       </Container>
     </Router>

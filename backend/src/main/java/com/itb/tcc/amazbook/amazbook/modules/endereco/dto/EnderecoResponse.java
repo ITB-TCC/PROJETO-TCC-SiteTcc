@@ -10,10 +10,10 @@ import lombok.Data;
 public class EnderecoResponse {
 
     private Integer id;
-    private String cep;
-    private String logradouro;
-    private String complemento;
-    private String bairro;
+    private String nome;
+    private String telefone;
+    private String rua;
+    private String pontoDeReferencia;
     private String cidade;
     private String estado;
     private Short numero;
@@ -23,10 +23,10 @@ public class EnderecoResponse {
         return EnderecoResponse
                 .builder()
                 .id(endereco.getId())
-                .cep(endereco.getCep())
-                .logradouro(endereco.getLogradouro())
-                .complemento(endereco.getComplemento())
-                .bairro(endereco.getBairro())
+                .nome(endereco.getNome())
+                .telefone(endereco.getTelefone())
+                .rua(endereco.getRua())
+                .pontoDeReferencia(endereco.getPontoDeReferencia())
                 .cidade(endereco.getCidade())
                 .estado(endereco.getEstado())
                 .numero(endereco.getNumero())
