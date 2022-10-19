@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Payment from './components/Payment';
 import AddProduct from './components/AddProduct';
+import Product from './components/Product';
 
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -44,6 +45,7 @@ function App() {
               </Elements>
             } />
 
+          <Route path='/product' element={<Product/>} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/category/:id" element={<Category />} />
