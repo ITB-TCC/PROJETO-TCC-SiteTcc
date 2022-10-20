@@ -23,37 +23,5 @@ public class FileService implements SaveMultiPartFile {
 
     //TODO - FAZER O UPLOAD DA IMAGE DO LIVRO.
 
-    @Override
-    public void uploadLocal(MultipartFile file) {
 
-        try {
-            byte[] data = file.getBytes();
-            Path path = Paths.get(PATH_DIRECTORY + file.getOriginalFilename());
-            Files.write(path, data);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public FilesBook uploadDb(MultipartFile file) {
-        FilesBook filesBook = new FilesBook();
-
-        try {
-            filesBook.setFileData(file.getBytes());
-            filesBook.setFileType(file.getContentType());
-            filesBook.setFileName(file.getName());
-            fileRepository.save(filesBook);
-            return filesBook;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public FilesBook downloadFile(String file) {
-        FilesBook uploadedFileToRed = fileRepository.getOne(file);
-        return  uploadedFileToRed;
-    }
 }

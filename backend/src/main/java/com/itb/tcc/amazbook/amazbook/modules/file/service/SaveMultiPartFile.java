@@ -6,9 +6,4 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface SaveMultiPartFile {
 
-    void uploadLocal(MultipartFile file);
-    FilesBook uploadDb(MultipartFile multipartFile);
-
-    FilesBook downloadFile(String file);
-
 }

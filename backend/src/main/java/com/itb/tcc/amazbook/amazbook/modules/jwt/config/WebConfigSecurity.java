@@ -16,7 +16,15 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -47,6 +55,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/login")
                 .hasRole("ADMIN")
+                .antMatchers("/api/usuarios/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().
@@ -55,6 +64,14 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new JWTApiAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .cors();
+
+        http.cors().configurationSource(request -> {
+            var cors = new CorsConfiguration();
+            cors.setAllowedOrigins(List.of("http://127.0.0.1:5173"));
+            cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
+            cors.setAllowedHeaders(List.of("*"));
+            return cors;
+        }).and();
     }
 
     @Override
@@ -63,4 +80,6 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(implementationUserDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder()); // Padrão de codificação de senha para o user
     }
+
+
 }

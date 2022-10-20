@@ -9,18 +9,18 @@ import lombok.Data;
 @Builder
 public class FileResponse {
 
-    private String id;
-    private String fileName;
-    private String fileType;
-    private byte[] fileData;
+    private Integer id;
+    private String name;
+    private String type;
+    private byte[] picByte;
 
     public static FileResponse of(FilesBook filesBook) {
         return FileResponse
                 .builder()
                 .id(filesBook.getId())
-                .fileName(filesBook.getFileName())
-                .fileType(filesBook.getFileType())
-                .fileData(filesBook.getFileData())
+                .name(filesBook.getName())
+                .type(filesBook.getType())
+                .picByte(filesBook.getPicByte())
                 .build();
     }
 }

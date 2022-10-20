@@ -44,6 +44,21 @@ public class UsuarioService {
                 .orElseThrow(() -> new ValidationException(ErrorUtil.ID_EMPTY));
     }
 
+    public UsuarioResponse updateUser(UsuarioRequest usuarioRequest, Integer id) {
+        validateClienteDataInformed(usuarioRequest);
+        validateInformedId(id);
+
+        Usuario usuario = Usuario.of(usuarioRequest);
+        usuario.setId(id);
+
+        String passwordCripto = new BCryptPasswordEncoder().encode(usuarioRequest.getSenha());
+        usuario.setSenha(passwordCripto);
+
+        usuarioRepository.save(usuario);
+        return UsuarioResponse.of(usuario);
+
+    }
+
     public UsuarioResponse findByIdResponse(Integer id) {
         return UsuarioResponse
                 .of(findById(id));

@@ -53,6 +53,7 @@ public class Livro {
     @Column(name = "VALOR_LIVRO")
     private Double valueBook;
 
+
     /*@Column(name = "image_book")
     @Lob
     private byte[] image;*/

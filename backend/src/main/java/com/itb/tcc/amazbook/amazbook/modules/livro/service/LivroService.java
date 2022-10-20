@@ -14,14 +14,14 @@ import com.itb.tcc.amazbook.amazbook.modules.livro.repository.LivroRepository;
 import com.itb.tcc.amazbook.amazbook.utils.ErrorUtil;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,10 +35,8 @@ public class LivroService {
     private final LivroRepository livroRepository;
     private final CategoryService categoryService;
 
-    private final FileService fileService;
+    private static String PATH_DIRECTORY = "/D:/Pablo/Documents/images";
 
-
-    private String PATH_DIRECTORY = "D:\\Pablo\\Documents\\images\\";
 
     public List<LivroResponse> findAll() {
         return livroRepository
@@ -52,10 +50,8 @@ public class LivroService {
         validateBookDataInformed(livroRequest);
 
         Category category = categoryService.findById(livroRequest.getCategoryId());
-
-        //FilesBook filesBook = fileService.findById(livroRequest.getFilesId());
-
         var livro = livroRepository.save(Livro.of(livroRequest, category));
+
 
         return LivroResponse.of(livro);
     }

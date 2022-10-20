@@ -55,7 +55,7 @@ public class LivroController {
         return ResponseEntity.status(HttpStatus.CREATED).body(livroService.save(livroRequest));
     }
 
-    @PostMapping(value = "/save2", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/save2", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> save2(@RequestBody LivroRequest livroRequest) throws IOException {
         return ResponseEntity.status(HttpStatus.CREATED).body(livroService.save(livroRequest));
     }

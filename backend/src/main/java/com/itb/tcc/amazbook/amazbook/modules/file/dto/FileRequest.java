@@ -7,8 +7,7 @@ import javax.persistence.Lob;
 @Data
 public class FileRequest {
 
-    private String fileName;
-    private String fileType;
-    @Lob
-    private byte[] fileData;
+    private String name;
+    private String type;
+    private byte[] picByte;
 }

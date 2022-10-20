@@ -4,14 +4,20 @@ import com.itb.tcc.amazbook.amazbook.modules.file.dto.FileRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.BeanUtils;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 
 @Entity
@@ -19,17 +25,27 @@ import javax.persistence.Lob;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "files")
 public class FilesBook {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-    private String fileName;
-    private String fileType;
-    @Lob
-    private byte[] fileData;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
+    @Column(name = "NAME")
+    private String name;
+
+    @Column(name = "TYPE")
+    private String type;
+
+    @Column(name = "picByte", length = 1000)
+    private byte[] picByte;
+
+    public FilesBook(String name, String type, byte[] picByte) {
+        this.name = name;
+        this.type = type;
+        this.picByte = picByte;
+    }
 
     public static FilesBook of(FileRequest fileRequest) {
         FilesBook filesBook = new FilesBook();
@@ -37,9 +53,9 @@ public class FilesBook {
         return FilesBook
                 .builder()
                 .id(filesBook.getId())
-                .fileName(filesBook.getFileName())
-                .fileType(filesBook.getFileType())
-                .fileData(filesBook.getFileData())
+                .name(filesBook.getName())
+                .type(filesBook.getType())
+                .picByte(filesBook.getPicByte())
                 .build();
     }
 }

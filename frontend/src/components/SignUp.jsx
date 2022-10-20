@@ -53,7 +53,7 @@ const SignUp = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <p>Password</p>
+                    <p>Password</p> 
                     <input type="Password" onChange={(e) => setSenha(e.target.value)} placeholder='****' />
                 </InputContainer>
 

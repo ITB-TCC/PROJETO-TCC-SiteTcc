@@ -13,12 +13,14 @@ const Header = () => {
     const [{ basket }] = useStateValue(false);
     const [searchLivro, setSearchLivro] = useState("");
     const [nome, setNome] = useState("");
+    const [userId, setUserId] = useState(0);
 
     const navigate = useNavigate();
 
 
     Api.get(`/api/usuarios/email/${email}`).then((response) => {
         setNome(response.data.nome);
+        setUserId(response.data.id);
     }).catch((error) => {
         console.log(error);
     });
@@ -66,7 +68,24 @@ const Header = () => {
                             token ? (
 
                                 <NavbarDropdownContent>
+                                    <DropdownItem onClick={() => {
+                                        navigate(`/updateUser/${userId}`)
+                                        window.location.reload();
+                                    }}>
+                                        <span>Atualizar Dados</span>
+                                    </DropdownItem>
 
+                                    {
+                                        email == "admin@admin.com" ? (
+
+                                            <DropdownItem onClick={() => {
+                                                navigate("/addproduct")
+                                                window.location.reload();
+                                            }}>
+                                                <span>Cadastrar Livro</span>
+                                            </DropdownItem>
+                                        ) : <p></p>
+                                    }
                                     <DropdownItem onClick={() => {
                                         localStorage.removeItem("token");
                                         localStorage.removeItem("nome");
@@ -75,9 +94,13 @@ const Header = () => {
                                     }}>
                                         <span>Sair</span>
                                     </DropdownItem>
+
                                 </NavbarDropdownContent>
                             ) : <p></p>
                         }
+
+
+
                     </NavButton>
 
                     {

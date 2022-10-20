@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Api from "../api/Api";
 // import axios from "../axios"
 
-function AddProduct() {
+const AddProduct = () => {
 
 
     const navigate = useNavigate()
@@ -97,7 +97,10 @@ function AddProduct() {
                        }
                     </Select>
                 </InputContainer>  
-                <Button onClick={onSubmit}>Adicionar Produto</Button>
+                <Button onClick={() => {
+                    onSubmit
+                    alert("Livro cadastrado com sucesso!")
+                }}>Adicionar Produto</Button>
             </FormContainer>
         </Container>
     )
