@@ -40,14 +40,16 @@ const Category = () => {
                   id={category.id}
                   image={"https://images-na.ssl-images-amazon.com/images/I/91yUtx44+AL.jpg"}
                   price={category.valueBook}
-                  rating={3}
+                  rating={category.estrela}
                   author={category.author}
                   title={category.name}
                   category={category.category.nameCategory}
                 />
-              )
-            })
-          }
+              ) 
+            })  
+            
+          }  
+                    
         </BookGrid>
 
       </CategorySection>
@@ -72,6 +74,10 @@ const CategorySection = styled.div`
   max-width: 100%;
 `;
 
+styled.h1`
+justify-content: center;
+place-items: center;
+`
 
 const BookGrid = styled.div`
   width: 100%;

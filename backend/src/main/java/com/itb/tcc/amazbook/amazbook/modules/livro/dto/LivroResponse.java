@@ -24,6 +24,7 @@ public class LivroResponse {
    /* @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate publicationDate;*/
     private Double valueBook;
+    private Float estrela;
 //    private byte[] image;
     private CategoryResponse category;
    // private FileResponse files;
@@ -42,6 +43,7 @@ public class LivroResponse {
                 .author(livro.getAuthor())
                 .publishingCompany(livro.getPublishingCompany())
                 .valueBook(livro.getValueBook())
+                .estrela(livro.getEstrela())
                 .category(CategoryResponse.of(livro.getCategory()))
                // .image(livro.getImage())
                 .build();

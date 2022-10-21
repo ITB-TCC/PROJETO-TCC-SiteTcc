@@ -16,7 +16,7 @@ const Home = () => {
 
   const [livros, setLivros] = useState("");
 
-  
+  const estrela = localStorage.getItem("estrela")
 
   useEffect(() => {
     Api.get("/api/book").then((response) => {
@@ -39,7 +39,7 @@ const Home = () => {
                 id={livro.id}
                 image={"https://books.google.com.br/books/publisher/content?id=hjcQCwAAQBAJ&hl=pt-BR&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U0MuXkWY6t7UZcHk_zr0rBIUtBhwQ&w=1280"}
                 price={livro.valueBook}
-                rating={3}
+                rating={livro.estrela}
                 title={livro.name}
                 author={livro.author}
                 category={livro.category.nameCategory}

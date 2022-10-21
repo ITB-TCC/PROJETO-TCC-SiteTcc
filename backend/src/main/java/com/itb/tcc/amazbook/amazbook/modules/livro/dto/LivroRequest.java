@@ -17,6 +17,7 @@ public class LivroRequest {
     @JsonProperty("value_book")
     private Double valueBook;
 
+    private Float estrela;
    /* @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate publicationDate;*/
     private Integer categoryId;

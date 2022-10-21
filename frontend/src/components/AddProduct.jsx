@@ -1,6 +1,7 @@
+import { Rating } from "@material-ui/lab";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import Api from "../api/Api";
 // import axios from "../axios"
@@ -17,13 +18,16 @@ const AddProduct = () => {
     const [value_book, setValueBook] = useState(0);
     const [categoriaList, setCategoriaList] = useState(0);
     const [categoryId, setCategoryId] = useState(0);
-    //const [rating, setRating] = useState(0);
+    const [estrela, setEstrela] = useState(0);
+
+
 
     const data = {
         name: name,
         author: author,
         editora: editora,
         value_book: value_book,
+        estrela: estrela,
         categoryId: categoryId
     };
 
@@ -42,7 +46,7 @@ const AddProduct = () => {
 
         await Api.post("/api/book/save", data).then((response) => {
             console.log(response.data);
-            console.log("deu certo")
+            alert("Livro Cadastrado com sucesso");
         }).catch((error) => {
             console.log(error);
         })
@@ -54,7 +58,7 @@ const AddProduct = () => {
                 <img src="./logo.png" alt="" />
             </Logo>
 
-            <FormContainer>
+            <FormContainer onSubmit={onSubmit}>
                 <h3>Adicionar Produto</h3>
 
                 <InputContainer>
@@ -77,11 +81,17 @@ const AddProduct = () => {
                     <input type="number" onChange={(e) => setValueBook(e.target.value)} value={value_book} />
                 </InputContainer>
 
+                
+                <InputContainer>
+                    <p>Estrela</p>
+                    <Rating name="half-rating-read" onChange={(e) => setEstrela(e.target.value)} defaultValue={2.5} precision={0.5} size="large" />
+                </InputContainer>
 
                 <InputContainer>
                     <p>Codigo</p>
                     <input type="number" onChange={(e) => setCategoryId(e.target.value)} value={categoryId} />
                 </InputContainer>
+
 
                 <InputContainer>
                     <p>Categoria</p>
@@ -97,12 +107,9 @@ const AddProduct = () => {
                        }
                     </Select>
                 </InputContainer>  
-                <Button onClick={() => {
-                    onSubmit
-                    alert("Livro cadastrado com sucesso!")
-                }}>Adicionar Produto</Button>
+                <Button>Adicionar Produto</Button>
             </FormContainer>
-        </Container>
+        </Container>    
     )
 }
 

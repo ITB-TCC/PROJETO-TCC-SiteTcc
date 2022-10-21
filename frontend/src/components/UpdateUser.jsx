@@ -12,7 +12,6 @@ const UpdateUser = () => {
 
     const { id } = useParams();
 
-
     const data = {
         nome: nome,
         login: login,

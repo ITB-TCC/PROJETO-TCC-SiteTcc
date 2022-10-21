@@ -6,6 +6,7 @@ import { useStateValue } from '../StateProvider';
 
 const Header = () => {
 
+    const navigate = useNavigate();
 
     const token = localStorage.getItem("token");
     const email = localStorage.getItem("email");
@@ -14,9 +15,6 @@ const Header = () => {
     const [searchLivro, setSearchLivro] = useState("");
     const [nome, setNome] = useState("");
     const [userId, setUserId] = useState(0);
-
-    const navigate = useNavigate();
-
 
     Api.get(`/api/usuarios/email/${email}`).then((response) => {
         setNome(response.data.nome);

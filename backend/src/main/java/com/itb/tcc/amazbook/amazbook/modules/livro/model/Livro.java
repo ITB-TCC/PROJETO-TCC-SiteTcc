@@ -53,6 +53,9 @@ public class Livro {
     @Column(name = "VALOR_LIVRO")
     private Double valueBook;
 
+    @Column(name = "ESTRELA", length = 5, nullable = false)
+    private Float estrela;
+
 
     /*@Column(name = "image_book")
     @Lob
@@ -83,6 +86,7 @@ public class Livro {
                 .author(livroRequest.getAuthor())
                 .publishingCompany(livroRequest.getPublishingCompany())
                 .valueBook(livroRequest.getValueBook())
+                .estrela(livroRequest.getEstrela())
               //  .image(livro.getImage())
                 //.publicationDate(livroRequest.getPublicationDate())
                 .category(category)
