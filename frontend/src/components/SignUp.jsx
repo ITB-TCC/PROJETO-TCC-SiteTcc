@@ -40,10 +40,10 @@ const SignUp = () => {
         </Logo>
 
         <FormContainer onSubmit={onSubmit}>
-                <h3>Sign-In</h3>
+                <h3>Cadastre-se</h3>
 
                 <InputContainer>
-                    <p>Full Name</p>
+                    <p>Nome</p>
                     <input type="text" onChange={(e) => setNome(e.target.value)} placeholder='John Cena' />
                 </InputContainer>
 
@@ -53,12 +53,12 @@ const SignUp = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <p>Password</p> 
+                    <p>Senha</p> 
                     <input type="Password" onChange={(e) => setSenha(e.target.value)} placeholder='****' />
                 </InputContainer>
 
                 <SignUpButton>Criar conta na Bookshop</SignUpButton>
-                <InfoText>By continuingm, you agree to Bookshop <span>Conditions of Use</span> and <span>Privacy Note .</span></InfoText>
+                <InfoText>Ao continuar, você concorda com as <span>Condições de Uso</span> e <span>Nota de Privacidade </span>do Books9nine.</InfoText>
             </FormContainer>
 
         <LoginButton onClick={() => navigate('/login')}>Voltar ao Login</LoginButton>

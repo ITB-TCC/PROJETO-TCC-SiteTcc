@@ -31,6 +31,10 @@ span{
 
 img{
   width: 400px;
+
+  @media only screen and (max-width: 650px){
+        width: 300px;
+    }
 }
 `;
 

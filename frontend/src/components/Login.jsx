@@ -38,7 +38,7 @@ const Login = () => {
             </Logo>
 
             <FormContainer onSubmit={onSubmit}>
-                <h3>Sign-In</h3>
+                <h3>Login</h3>
 
                 <InputContainer>
                     <p>Email</p>
@@ -46,13 +46,13 @@ const Login = () => {
                 </InputContainer>
 
                 <InputContainer>
-                    <p>Password</p>
+                    <p>Senha</p>
                     <input type="Password" onChange={(e) => setSenha(e.target.value)} placeholder='****' />
                 </InputContainer>
 
                 <LoginButton>Login</LoginButton>
 
-                <InfoText>By continuingm, you agree to Bookshop <span>Conditions of Use</span> and <span>Privacy Note .</span></InfoText>
+                <InfoText>Ao continuar, você concorda com as <span>Condições de Uso</span> e <span>Nota de Privacidade </span>do Books9nine.</InfoText>
             </FormContainer>
 
             <SignUpButton onClick={() => navigate("/signup")}>Criar conta na BookShop</SignUpButton>

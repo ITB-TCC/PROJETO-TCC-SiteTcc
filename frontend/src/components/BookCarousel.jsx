@@ -8,7 +8,7 @@ function BookCarousel() {
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -55,7 +55,7 @@ function BookCarousel() {
     <Slider {...settings}>
     <CardContainer>
         <Card
-          id={1}
+          id={16}
           image={"https://www.jbchost.com.br/editorajbc/wp-content/uploads/2017/07/your-name.-01-Capa_p.jpg"}
           price={50}
           rating={3}
@@ -65,9 +65,9 @@ function BookCarousel() {
 
     <CardContainer>
         <Card
-          id={1}
+          id={17}
           image={"https://images-na.ssl-images-amazon.com/images/I/91yUtx44+AL.jpg"}
-          price={50}
+          price={20}
           rating={3}
           title={"Naruto"}
           />
@@ -75,9 +75,9 @@ function BookCarousel() {
 
     <CardContainer>
         <Card
-          id={1}
+          id={18}
           image={"https://i.pinimg.com/564x/bd/20/ff/bd20ffd0ab9412692d4156d25a230e01.jpg"}
-          price={50}
+          price={10}
           rating={3}
           title={"Berserk"}
           />
@@ -85,9 +85,9 @@ function BookCarousel() {
 
     <CardContainer>
         <Card
-          id={1}
+          id={19}
           image={"https://trecobox.com.br/wp-content/uploads/2020/07/jujutsu-kaisen-vol-1-capa-panini.jpg"}
-          price={50}
+          price={80}
           rating={3}
           title={"Jujutsu Kaisen"}
           />
@@ -95,43 +95,25 @@ function BookCarousel() {
 
     <CardContainer>
         <Card
-          id={1}
+          id={20}
           image={"https://i0.wp.com/otakusbrasil.com/wp-content/uploads/2021/02/Fire-Force-1.jpg?resize=685%2C1024&ssl=1"}
-          price={50}
-          rating={3}
+          price={70}
+          rating={4}
           title={"Fire Force"}
           />
     </CardContainer>
 
     <CardContainer>
         <Card
-          id={1}
+          id={21}
           image={"https://images-na.ssl-images-amazon.com/images/I/91yUtx44+AL.jpg"}
           price={50}
-          rating={3}
+          rating={4}
           title={"Naruto"}
           />
     </CardContainer>
 
-    <CardContainer>
-        <Card
-          id={1}
-          image={"https://images-na.ssl-images-amazon.com/images/I/91yUtx44+AL.jpg"}
-          price={50}
-          rating={3}
-          title={"Naruto"}
-          />
-    </CardContainer>
 
-    <CardContainer>
-        <Card
-          id={1}
-          image={"https://images-na.ssl-images-amazon.com/images/I/91yUtx44+AL.jpg"}
-          price={50}
-          rating={3}
-          title={"Naruto"}
-          />
-    </CardContainer>
   
     </Slider>        
 </Container>
@@ -148,12 +130,25 @@ const Container = styled.div`
     h1{
         margin-bottom: 25px;
     }
+
+    
+        @media only screen and (max-width: 600px) {
+        margin: 10px 100px 100px 150px;
+    }
+
+    @media only screen and (max-width: 520px) {
+          margin: 10px 60px 100px 60px;
+      }
 `;
 
 const CardContainer = styled.div`
     height: 420px;  
     max-width: 270px;
     padding-bottom: 10px;
+
+    @media only screen and (max-width: 600px) {
+        width: 700px;
+    }
 `;
 
 export default BookCarousel

@@ -23,36 +23,6 @@ function Footer() {
                             <div><BsInstagram /></div>
                         </Socials>
         </SocialContainer>
-
-        <Categories>
-            <h5>Categoria de Livros</h5>
-
-            <CategoriesList>
-                <span>Ação</span>
-                <span>Aventura</span>
-                <span>Comédia</span>
-                <span>Crime</span>
-                <span>Drama</span>
-                <span>Ficção</span>
-                <span>Mangá</span>
-                <span>Mistério</span>
-                <span>Romance</span>
-                <span>Terror</span>
-                <span></span>
-                <span>Veja Mais</span>
-            </CategoriesList>
-        </Categories>
-
-        <QuickLinks>
-                <h5>Company</h5>
-
-                <span>Sobre Nós</span>
-                <span>Contate-nos</span>
-                <span>Login</span>
-                <span>Cadastre-se</span>
-                <span>Privacidade</span>
-                <span>Termos de Serviço</span>
-            </QuickLinks>
     </Container>
   )
 }
@@ -83,23 +53,27 @@ const Container = styled.div`
 `;
 
 const SocialContainer = styled.div`
-    width: 20%;
+    width: 50%;
     color: white;
 
     h5{
         margin-top: 20px;
     }
 
-    @media only screen and (max-width: 767px){
-        width: 50%;
-        margin-top: 50px;
-        margin-left: 100px;
-    }
-
     @media only screen and (max-width: 1200px){
         margin-top: 50px;
         height: 100%;
+    }
 
+    @media only screen and (max-width: 767px){
+        width: 50%;
+        margin-top: 50px;
+        margin-left: 20%;
+    }
+
+    @media only screen and (max-width: 570px){
+       margin-left: 15%;
+       width: 80%;
     }
 `;
 
@@ -116,69 +90,26 @@ const Logo = styled.div`
 `;
 
 const Socials = styled.div`
-   width: 70%;
+   width: 50%;
    display: flex;
    justify-content: space-between;
    margin-top: 30px;
-`;
 
-
-
-const Categories = styled.div`
-    margin-top: 10px;
-    margin-left: 100px;
-
-    @media only screen and (max-width: 890px){
-       padding-left: 30px;
-    }
-    
-    @media only screen and (max-width: 767px){
-       margin-top: 100px;
-       margin-left: 60px;
-
-    }
 
    
-`;
-
-const CategoriesList = styled.div`
-    display: grid;
-    flex-direction: column;
-    margin-top: 20px;
-
-    grid-auto-rows: auto ;
-    grid-template-columns: repeat(2, 100px);
-    grid-gap: 15px;
-
-    span{
-        cursor: pointer;
-        color: #FFF;
-        font-size: 1rem;
-    }
-`;
-
-const QuickLinks = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 100px;
-
-    h5{
-        margin-bottom: 15px;
+   @media only screen and (max-width: 1200px){
+        width: 70%;
     }
 
-    span{
-        cursor: pointer;
-        color: #FFF;
-        margin-bottom: 12px;
-        font-size: 1rem;
-    
+       
+   @media only screen and (max-width: 870px){
+        width: 80%;
     }
 
-
-    @media only screen and (max-width: 767px){
-       margin-top: 90px;
-       margin-bottom: 100px;
+    @media only screen and (max-width: 500px){
+        width: 90%;
     }
+
 `;
 
 export default Footer;
